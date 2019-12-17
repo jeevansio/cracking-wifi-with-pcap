@@ -1,0 +1,12 @@
+{
+    "cSpell.ignoreWords": [
+        "ctypes",
+        "hdrp",
+        "libpcap",
+        "pcap",
+        "pcapfile",
+        "pkts",
+        "struct",
+        "structs"
+    ]
+}
