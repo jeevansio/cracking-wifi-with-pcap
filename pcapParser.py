@@ -84,6 +84,7 @@ Load and validate the header of a pcap file.
     # use the correct byte order for the file header
     if raw_savefile_header[:4] == '\xa1\xb2\xc3\xd4':
         byte_order = 'big'
+        # https://blog.csdn.net/jackyzhousales/article/details/78030847
         unpacked = struct.unpack('>IhhIIII', raw_savefile_header)
     elif raw_savefile_header[:4] == '\xd4\xc3\xb2\xa1':
         byte_order = 'little'
@@ -137,7 +138,7 @@ def load_savefile(input_file, layers=0, verbose=False):
     VERBOSE = old_verbose
     return sfile, header
 
-
+# https://wiki.wireshark.org/Development/LibpcapFileFormat
 def __validate_header__(header):
     if not type(header) == __pcap_header__:
         return False

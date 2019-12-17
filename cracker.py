@@ -33,7 +33,7 @@ def crackProcess(ssid, clientMac, APMac, Anonce, Snonce, mic, data, passQueue, f
         # pbkdf2_bin(data, salt, iterations=1000, keylen=24, hashfunc=SHA-1):
         pmk = pbkdf2_bin(passPhrase, ssid, 4096, 32)
         # generate Pairwise Temporal Key
-        ptk = (pmk,pke)
+        ptk = hmac4times(pmk,pke)
         if ord(data[6]) & 0b00000010 == 2:
             calculatedMic = hmac.new(ptk[0:16],data,sha1).digest()[0:16]
         else:
